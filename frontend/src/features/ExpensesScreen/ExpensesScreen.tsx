@@ -1,6 +1,6 @@
-import { Category } from '../../components/Category'
+import { Category } from "components/Category"
 import classes from './ExpensesScreen.module.css'
-import { data, DoughnutChart } from '../../components/Diagram'
+import { data, DoughnutChart } from "components/Diagram"
 import { useResponsiveChartSize } from './hooks/useResponsiveChartSize.ts'
 
 export const ExpensesScreen = () => {
