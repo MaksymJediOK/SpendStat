@@ -1,25 +1,16 @@
-import { Controller } from 'react-hook-form'
-import { InputProps } from 'types/InputTypes.ts'
+import { CustomInputProps } from 'types/InputTypes.ts'
 import classes from './OutlinedInput.module.scss'
+import { Controller, FieldValues } from 'react-hook-form'
 
-export const Input = ({ control, name, id, type, label, errors }: InputProps) => {
+export const Input = <T extends FieldValues>({ name, label, type, control }: CustomInputProps<T>) => {
 	return (
 		<Controller
-			control={control}
 			name={name}
+			control={control}
 			render={({ field }) => (
-				<div>
-					<div className={classes.inputGroup}>
-						<label className={classes.label}>{label}</label>
-						<input
-							autoComplete='off'
-							id={id}
-							className={classes.input}
-							type={type}
-							{...field}
-						/>
-					</div>
-					{errors && <div>error occurred</div>}
+				<div className={classes.inputGroup}>
+					<label className={classes.label}>{label}</label>
+					<input className={classes.input} type={type} {...field} />
 				</div>
 			)}
 		/>

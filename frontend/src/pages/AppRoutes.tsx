@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { Login } from './Auth/Login/Login.tsx'
-import { Registration } from './Auth/Registration'
 import App from '../App.tsx'
+import { Registration } from "../features/Registration/Registration.tsx";
 
 export const AppRoutes = () => {
 	return (
