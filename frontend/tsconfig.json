@@ -24,7 +24,8 @@
     "paths": {
       "components/*": ["components/*"],
       "UI/*": ["UI/*"],
-      "types/*": ["types/*"]
+      "types/*": ["types/*"],
+      "features/*": ["features/*"]
     }
   },
   "include": ["src"],
