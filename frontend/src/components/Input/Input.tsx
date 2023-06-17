@@ -8,9 +8,9 @@ export const Input = <T extends FieldValues>({ name, label, type, control }: Cus
 			name={name}
 			control={control}
 			render={({ field }) => (
-				<div className={classes.inputGroup}>
+				<div className={`${classes.inputGroup} `}>
 					<label className={classes.label}>{label}</label>
-					<input className={classes.input} type={type} {...field} />
+					<input className={`${classes.input}  md:w-32 lg:w-80`} type={type} {...field} />
 				</div>
 			)}
 		/>

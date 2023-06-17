@@ -4,5 +4,6 @@ export const MenuOptions = [
 	{ name: 'Home', link: '/home', icon: HiHome },
 	{ name: 'Currency', link: '/', icon: HiOutlineCurrencyDollar },
 	{ name: 'Date', link: '/date', icon: HiOutlineCalendar },
-	{ name: 'Login', link: '/login', icon: HiOutlineLogin },
+	{ name: 'Sign up', link: '/registration', icon: HiOutlineLogin },
+	{ name: 'Sign in', link: '/login', icon: HiOutlineLogin },
 ]
