@@ -20,7 +20,7 @@ To run the project locally, follow these steps:
 
 1. Clone the repository: `git clone <repository-url>`
 2. Install dependencies: `npm install`
-3. Start the development server: `npm start`
+3. Start the development server: `npm run dev`
 4. Open your browser and navigate to `http://localhost:3000`
 
 ## Folder Structure
