@@ -18,7 +18,7 @@ async function start() {
 
     app.useGlobalPipes(new ValidationPipe())
     await app.listen(3000, () => {
-        console.log('server started')
+        console.log('server started :)')
     })
 }
 start()
