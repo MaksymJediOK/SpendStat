@@ -1,6 +1,13 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common'
+import { GetCurrentUserId } from '../common/decorators'
+import { CreateExpenseDto } from './dto/create-expense.dto'
+import { ExpenseService } from './expense.service'
 
 @Controller('expense')
 export class ExpenseController {
-
+    constructor(private expenseService: ExpenseService) {}
+    @Post()
+    createExpense(@GetCurrentUserId() userId: number, @Body() dto: CreateExpenseDto) {
+        return this.expenseService.createNewExpense(userId, dto)
+    }
 }

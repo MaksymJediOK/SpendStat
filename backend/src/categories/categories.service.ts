@@ -10,4 +10,15 @@ export class CategoriesService {
   async createCategory(dto: CreateCategoryDto) {
 
   }
+
+  private async addExpenseValueToCategory(categoryId: number, expenseValue: number) {
+    await this.prisma.category.update({
+      where: {
+        id: categoryId
+      },
+      data: {
+
+      }
+    })
+  }
 }

@@ -19,6 +19,7 @@ model User {
   userCategories Category[]
   userSettings   UserSetting? @relation(fields: [userSettingId], references: [id])
   userSettingId  Int?         @unique
+  Expense        Expense[]
 
   @@unique([email, password])
   @@map("users")
@@ -45,4 +46,6 @@ model Expense {
   title     String?
   value     Int
   createdAt DateTime @default(now())
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
 }
