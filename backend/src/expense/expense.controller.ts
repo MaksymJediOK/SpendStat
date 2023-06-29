@@ -6,8 +6,10 @@ import { ExpenseService } from './expense.service'
 @Controller('expense')
 export class ExpenseController {
     constructor(private expenseService: ExpenseService) {}
-    @Post()
+    @Post('')
     createExpense(@GetCurrentUserId() userId: number, @Body() dto: CreateExpenseDto) {
         return this.expenseService.createNewExpense(userId, dto)
     }
+
+
 }

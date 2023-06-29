@@ -6,4 +6,6 @@ export class CreateCategoryDto {
     title: string
     @IsString({ message: 'Must be a string' })
     color?: string
+    @IsString()
+    icon? : string
 }
