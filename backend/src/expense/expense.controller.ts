@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common'
+import { Body, Controller, Get, Post } from '@nestjs/common'
 import { GetCurrentUserId } from '../common/decorators'
 import { CreateExpenseDto } from './dto/create-expense.dto'
 import { ExpenseService } from './expense.service'
@@ -11,5 +11,8 @@ export class ExpenseController {
         return this.expenseService.createNewExpense(userId, dto)
     }
 
-
+    @Get('')
+    getAllTimeExpenses(@GetCurrentUserId() userId: number) {
+        return this.expenseService.getAllTimeExpenseInEachCategory(userId)
+    }
 }

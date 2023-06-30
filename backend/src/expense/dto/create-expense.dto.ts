@@ -5,4 +5,6 @@ export class CreateExpenseDto {
     title: string
     @IsNumber({ maxDecimalPlaces: 3 }, { message: 'Only numerical values' })
     value: number
+    @IsNumber({}, { message: 'Only numerical values' })
+    categoryId: number
 }
