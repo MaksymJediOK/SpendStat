@@ -1,47 +1,53 @@
-import { Injectable } from '@nestjs/common'
+import { BadRequestException, Injectable } from '@nestjs/common'
 import { PrismaService } from '../prisma/prisma.service'
 import { CreateExpenseDto } from './dto/create-expense.dto'
 import { Category, Expense } from '@prisma/client'
 import { ExpenseCategory } from './types'
 import { ExpenseByDateService } from './sub-services/expenseByDate.service'
+import { ExpenseRepository } from './sub-services/expense.repository'
 
 @Injectable()
 export class ExpenseService {
-    constructor(private prisma: PrismaService, private byDateService: ExpenseByDateService) {}
+    constructor(
+        private prisma: PrismaService,
+        private byDateService: ExpenseByDateService,
+        private expenseRepository: ExpenseRepository,
+    ) {}
 
-    async createNewExpense(userId: number, dto: CreateExpenseDto) {
-        return this.prisma.expense.create({
-            data: {
-                title: dto.title,
-                value: dto.value,
-                User: {
-                    connect: { id: userId },
-                },
-                Category: {
-                    connect: { id: dto.categoryId },
-                },
-            },
-        })
+    async createExpense(userId: number, dto: CreateExpenseDto) {
+        return this.expenseRepository.createNewExpense(userId, dto)
     }
-    //Todo specify the user | include statement
-    // Todo move retrieving data to repository
+
+    async getSummarizedExpenses(dateFilter: string = 'today', userId: number) {
+        let categoryWithExp: Category[]
+
+        switch (dateFilter) {
+            case 'today': {
+                categoryWithExp = await this.byDateService.getExpensesTodayByCategory(userId)
+                break
+            }
+            case 'month': {
+                categoryWithExp = await this.byDateService.getExpensesInCurrentMonthByCategory(userId)
+                break
+            }
+            case 'year': {
+                categoryWithExp = await this.byDateService.getExpensesInCurrentYear(userId)
+                break
+            }
+            case 'all': {
+                categoryWithExp = await this.byDateService.getAllTimeExpenseByCategory(userId)
+                break
+            }
+            default:
+                return new BadRequestException({}, 'Something wen wrong')
+        }
+
+        return this.SumExpenses(categoryWithExp)
+    }
+
     async getAllTimeExpenseInEachCategory(userId: number) {
-        const userCategories: Category[] = await this.prisma.category.findMany({
-            where: {
-                User: {
-                    id: userId,
-                },
-            },
-            include: {
-                expenses: true,
-            },
-        })
+        const expenses = await this.byDateService.getAllTimeExpenseByCategory(userId)
 
-        return this.SumExpenses(userCategories)
-    }
-
-    async getSumPairByCategory(userId: number) {
-        const expenses = await this.byDateService.getExpensesInCurrentMonthByCategory(userId)
         return this.SumExpenses(expenses)
     }
 
@@ -64,4 +70,6 @@ export class ExpenseService {
             return acc + exp.value
         }, 0)
     }
+
+    private
 }

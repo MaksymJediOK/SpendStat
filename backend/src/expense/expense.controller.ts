@@ -8,11 +8,11 @@ export class ExpenseController {
     constructor(private expenseService: ExpenseService) {}
     @Post('')
     createExpense(@GetCurrentUserId() userId: number, @Body() dto: CreateExpenseDto) {
-        return this.expenseService.createNewExpense(userId, dto)
+        return this.expenseService.createExpense(userId, dto)
     }
 
-    @Get('')
+    @Get('date')
     getAllTimeExpenses(@GetCurrentUserId() userId: number) {
-        return this.expenseService.getAllTimeExpenseInEachCategory(userId)
+        return this.expenseService.getSummarizedExpenses('today', userId)
     }
 }
