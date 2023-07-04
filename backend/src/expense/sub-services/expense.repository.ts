@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { PrismaService } from '../../prisma/prisma.service'
 import { CreateExpenseDto } from '../dto/create-expense.dto'
+import { UpdateExpenseDto } from '../dto/update-expense.dto'
 
 @Injectable()
 export class ExpenseRepository {
@@ -17,6 +18,23 @@ export class ExpenseRepository {
                 Category: {
                     connect: { id: dto.categoryId },
                 },
+            },
+        })
+    }
+
+    async updateExpense(expenseId: number, updateDto: UpdateExpenseDto) {
+        const existingExp = await this.prisma.expense.findUnique({
+            where: {
+                id: expenseId,
+            },
+        })
+        return this.prisma.expense.update({
+            where: {
+                id: expenseId,
+            },
+            data: {
+                ...existingExp,
+                ...updateDto,
             },
         })
     }

@@ -1,7 +1,8 @@
-import { Body, Controller, Get, Post } from '@nestjs/common'
+import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common'
 import { GetCurrentUserId } from '../common/decorators'
 import { CreateExpenseDto } from './dto/create-expense.dto'
 import { ExpenseService } from './expense.service'
+import { UpdateExpenseDto } from './dto/update-expense.dto'
 
 @Controller('expense')
 export class ExpenseController {
@@ -11,8 +12,13 @@ export class ExpenseController {
         return this.expenseService.createExpense(userId, dto)
     }
 
-    @Get('date')
-    getAllTimeExpenses(@GetCurrentUserId() userId: number) {
-        return this.expenseService.getSummarizedExpenses('today', userId)
+    @Put(':id')
+    updateExpense(@Param(':id') expenseId: number, @Body() dto: UpdateExpenseDto) {
+        return this.expenseService.updateExpense(expenseId, dto)
+    }
+
+    @Get('')
+    getAllTimeExpenses(@Query('filter') filter: string = 'today', @GetCurrentUserId() userId: number) {
+        return this.expenseService.getSummarizedExpenses(filter, userId)
     }
 }

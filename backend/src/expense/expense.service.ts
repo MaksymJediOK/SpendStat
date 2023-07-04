@@ -5,6 +5,7 @@ import { Category, Expense } from '@prisma/client'
 import { ExpenseCategory } from './types'
 import { ExpenseByDateService } from './sub-services/expenseByDate.service'
 import { ExpenseRepository } from './sub-services/expense.repository'
+import { UpdateExpenseDto } from './dto/update-expense.dto'
 
 @Injectable()
 export class ExpenseService {
@@ -16,6 +17,10 @@ export class ExpenseService {
 
     async createExpense(userId: number, dto: CreateExpenseDto) {
         return this.expenseRepository.createNewExpense(userId, dto)
+    }
+
+    async updateExpense(expenseId: number, updateDto: UpdateExpenseDto) {
+        return this.expenseRepository.updateExpense(expenseId, updateDto)
     }
 
     async getSummarizedExpenses(dateFilter: string = 'today', userId: number) {
@@ -39,7 +44,7 @@ export class ExpenseService {
                 break
             }
             default:
-                return new BadRequestException({}, 'Something wen wrong')
+                return new BadRequestException({}, 'Something went wrong')
         }
 
         return this.SumExpenses(categoryWithExp)
