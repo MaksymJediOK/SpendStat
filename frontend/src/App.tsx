@@ -1,6 +1,6 @@
 import { Sidebar } from 'components/Sidebar'
 import { Header } from 'components/Header'
-import { ExpensesScreen } from './features/ExpensesScreen'
+import { ExpensesScreen } from 'features/ExpensesScreen'
 
 function App() {
 	return (

@@ -1,0 +1,11 @@
+.selected {
+	&::before {
+		content: '';
+		width: 0.25rem;
+		height: 32px;
+		background-color: #030202;
+		margin-left: -12px;
+		@apply rounded-md;
+	}
+	@apply bg-neutral-300 font-semibold;
+}
