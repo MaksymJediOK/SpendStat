@@ -9,7 +9,7 @@ interface SidebarProps {
 }
 
 export const Sidebar = ({ children }: SidebarProps) => {
-	const [isOpen, setOpen] = useState(true)
+	const [isOpen, setOpen] = useState(false)
 
 	return (
 		<section className='flex gap-6'>

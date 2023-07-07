@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { IListItem } from 'UI/ListItem/types/ListItem.ts'
 import { ListItem } from 'UI/ListItem/ListItem.tsx'
 
@@ -9,7 +8,7 @@ interface ListBoxProps {
 
 export const ListBox = ({ heading, listItems }: ListBoxProps) => {
 	return (
-		<Link to='/home'>
+		<>
 			<h2 className='font-light'>{heading}</h2>
 			<ul className='list-none '>
 				{listItems.length ? (
@@ -22,6 +21,6 @@ export const ListBox = ({ heading, listItems }: ListBoxProps) => {
 					''
 				)}
 			</ul>
-		</Link>
+		</>
 	)
 }

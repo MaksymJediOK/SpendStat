@@ -1,6 +1,6 @@
-import { ReactNode } from 'react'
+import { ElementType } from 'react';
 
 export interface IListItem {
 	text: string
-	icon: ReactNode
+	icon: ElementType
 }
