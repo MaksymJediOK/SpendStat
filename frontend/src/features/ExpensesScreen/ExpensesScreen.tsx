@@ -9,9 +9,9 @@ export const ExpensesScreen = () => {
 
 	const gridRef = useRef<HTMLDivElement>(null)
 	const handleClick = (event: React.SyntheticEvent<EventTarget>) => {
-		if (!(event.target instanceof HTMLDivElement) || !(event.target instanceof HTMLDivElement)) {
-			return
-		}
+		// if (!(event.target instanceof HTMLDivElement) || !(event.target instanceof HTMLDivElement)) {
+		// 	return
+		// }
 		// console.log('ev.target', event.target.dataset['circle'])
 		const target = event.target as HTMLDivElement | SVGElement
 		const circle = target.getAttribute('data-circle')

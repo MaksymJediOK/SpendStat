@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
-type StorageValue = string | number | boolean
+// type StorageValue = string | number | boolean
 
-export function useLocalStorage(initialValue: StorageValue, key: string) {
+function useLocalStorage<T>(initialValue: T, key: string) {
 	const getValue = () => {
 		const storage = localStorage.getItem(key)
 
@@ -19,3 +19,5 @@ export function useLocalStorage(initialValue: StorageValue, key: string) {
 
 	return [value, setValue]
 }
+
+export { useLocalStorage }

@@ -25,7 +25,8 @@
       "components/*": ["components/*"],
       "UI/*": ["UI/*"],
       "types/*": ["types/*"],
-      "features/*": ["features/*"]
+      "features/*": ["features/*"],
+      "hooks/*": ["hooks/*"],
     }
   },
   "include": ["src"],

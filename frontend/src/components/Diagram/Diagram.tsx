@@ -41,7 +41,13 @@ export const DoughnutChart = ({ data, radius, innerRadius }: DoughnutChartProps)
 				return (
 					<g key={item.label}>
 						<path
-							d={`M${x1},${y1} A${radius},${radius} 0 ${largeArcFlagOuter},1 ${x2},${y2} L${x3},${y3} A${innerRadius},${innerRadius} 0 ${largeArcFlagInner},0 ${x4},${y4} Z`}
+							d={`M${x1},${y1} A${radius},${radius} 0 
+							${largeArcFlagOuter},1 
+							${x2},${y2} L${x3},${y3} A
+							${innerRadius},
+							${innerRadius} 0 
+							${largeArcFlagInner},0 
+							${x4},${y4} Z`}
 							fill={item.color}
 						/>
 						<line x1={center} y1={center} x2={x1} y2={y1} stroke='#ffffff' strokeWidth='2' />
