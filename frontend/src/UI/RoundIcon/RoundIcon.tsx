@@ -6,5 +6,5 @@ interface RoundIconProps {
 }
 
 export const RoundIcon = ({ color, icon }: RoundIconProps) => {
-	return <div className={`p-2 lg:p-4 rounded-full ${color}`}>{icon}</div>
+	return <div data-circle='hello' className={`p-2 lg:p-4 rounded-full ${color}`}>{icon}</div>
 }
