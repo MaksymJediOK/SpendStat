@@ -1,8 +1,9 @@
+import 'react-toastify/dist/ReactToastify.css'
 import { Sidebar } from 'components/Sidebar'
 import { Header } from 'components/Header'
 import { ExpensesScreen } from 'features/ExpensesScreen'
 import { CurrComponent } from 'features/ChangeCurrency'
-
+import { ToastContainer } from 'react-toastify'
 
 function App() {
 	return (
@@ -13,6 +14,7 @@ function App() {
 					<ExpensesScreen />
 					{/*Todo move to sidebar section*/}
 					<CurrComponent />
+					<ToastContainer />
 				</div>
 			</Sidebar>
 		</>
