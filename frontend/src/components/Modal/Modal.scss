@@ -18,12 +18,11 @@
 }
 
 .modal_content {
-	padding: 20px;
+	padding: 25px 35px;
 	border-radius: 12px;
 	background-color: white;
 	transform: scale(0.5);
 	transition: 0.3s all;
-	width: 40vw;
 	&.active {
 		transform: scale(1);
 	}

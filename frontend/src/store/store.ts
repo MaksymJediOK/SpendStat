@@ -1,18 +1,21 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { currencyModalReducer } from 'features/ChangeCurrency/reducer'
 import { expenseApi } from '../services'
-import { expenseModalReducer } from 'features/addExpense/reducers'
+import { categoryApi } from '../services'
+import { modalsReducer } from './reducers'
 
 const rootReducer = combineReducers({
 	currencyModal: currencyModalReducer,
-	expenseModal: expenseModalReducer,
+	manyModals: modalsReducer,
 	[expenseApi.reducerPath]: expenseApi.reducer,
+	[categoryApi.reducerPath]: categoryApi.reducer,
 })
 
 export const store = configureStore({
 	reducer: rootReducer,
 	devTools: true,
-	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(expenseApi.middleware),
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware().concat(expenseApi.middleware, categoryApi.middleware),
 })
 
 export type RootState = ReturnType<typeof store.getState>

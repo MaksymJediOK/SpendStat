@@ -1,6 +1,6 @@
 import { Modal } from 'components/Modal'
 import { ChangeCurrency } from 'features/ChangeCurrency/ChangeCurrency.tsx'
-import { RoundedButton } from 'UI/RoundedButton'
+import { RoundedButton } from 'UI/Buttons/RoundedButton'
 import { useAppDispatch, useAppSelector } from 'hooks/redux.ts'
 import { toggleCurrencyModal } from 'features/ChangeCurrency/reducer'
 

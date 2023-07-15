@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { Input } from 'components/Input'
-import { SubmitButton } from 'UI/SubmitButton'
+import { SubmitButton } from 'UI/Buttons/SubmitButton'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { registrationSchema } from './schemas/registrationSchema.ts'
 import { ErrorMsg } from 'UI/ErrorMsg'

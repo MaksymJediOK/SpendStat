@@ -17,6 +17,7 @@ async function start() {
     SwaggerModule.setup('/api/docs', app, document)
 
     app.useGlobalPipes(new ValidationPipe())
+    app.enableCors()
     await app.listen(3000, () => {
         console.log('server started :)')
     })

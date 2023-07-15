@@ -3,8 +3,12 @@ import classes from './ExpensesScreen.module.css'
 import { data, DoughnutChart } from 'components/Diagram'
 import { useResponsiveChartSize } from './hooks/useResponsiveChartSize.ts'
 import React, { useRef } from 'react'
+import { AddButton } from 'UI/Buttons/AddButton'
+import { useAppDispatch} from 'hooks/redux.ts'
+import { toggleCategoryModal } from 'store/reducers'
 
 export const ExpensesScreen = () => {
+	const dispatch = useAppDispatch()
 	const { radius, innerRadius } = useResponsiveChartSize()
 
 	const gridRef = useRef<HTMLDivElement>(null)
@@ -37,6 +41,9 @@ export const ExpensesScreen = () => {
 			</div>
 			<div className={classes.div7}>
 				<Category title='Products' expenses={152} />
+			</div>
+			<div className={classes.div8}>
+				<AddButton onClick={() => dispatch(toggleCategoryModal(true))} />
 			</div>
 		</div>
 	)

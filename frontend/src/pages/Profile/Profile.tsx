@@ -1,5 +1,5 @@
 import { Sidebar } from 'components/Sidebar'
-import { SubmitButton } from 'UI/SubmitButton'
+import { SubmitButton } from 'UI/Buttons/SubmitButton'
 import { ListBox } from 'components/ListBox'
 import { profileList } from './data/profileList.ts'
 import { EditProfile } from './ui/EditProfile'

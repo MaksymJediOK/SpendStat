@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { Input } from 'components/Input'
 import { ErrorMsg } from 'UI/ErrorMsg'
-import { RoundedButton } from 'UI/RoundedButton'
+import { RoundedButton } from 'UI/Buttons/RoundedButton'
 
 interface EditData {
 	name: string

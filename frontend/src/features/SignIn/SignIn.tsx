@@ -1,6 +1,6 @@
 import { Input } from 'components/Input'
 import { ErrorMsg } from 'UI/ErrorMsg'
-import { SubmitButton } from 'UI/SubmitButton'
+import { SubmitButton } from 'UI/Buttons/SubmitButton'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { signInSchema } from './schemas/signInSchema.ts'
