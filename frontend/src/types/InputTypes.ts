@@ -12,7 +12,7 @@ export interface InputProps {
 
 export interface CustomInputProps<T extends FieldValues> {
 	name: Path<T>
-	type: 'text' | 'email' | 'number'
+	type: 'text' | 'email' | 'number' | 'password'
 	label: string
 	control: Control<T>
 }

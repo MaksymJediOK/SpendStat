@@ -1,6 +1,6 @@
 import { Modal } from 'components/Modal'
 import { useAppDispatch, useAppSelector } from 'hooks/redux.ts'
-import { toggleExpenseModal } from '../../store/reducers'
+import { toggleExpenseModal } from 'store/reducers'
 
 // import { useForm } from 'react-hook-form'
 // import { Expense } from 'types/Expense.ts'

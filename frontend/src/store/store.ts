@@ -1,7 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { currencyModalReducer } from 'features/ChangeCurrency/reducer'
-import { expenseApi } from '../services'
-import { categoryApi } from '../services'
+import { authApi, expenseApi, categoryApi } from '../services'
 import { modalsReducer } from './reducers'
 
 const rootReducer = combineReducers({
@@ -9,13 +8,14 @@ const rootReducer = combineReducers({
 	manyModals: modalsReducer,
 	[expenseApi.reducerPath]: expenseApi.reducer,
 	[categoryApi.reducerPath]: categoryApi.reducer,
+	[authApi.reducerPath]: authApi.reducer,
 })
 
 export const store = configureStore({
 	reducer: rootReducer,
 	devTools: true,
 	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(expenseApi.middleware, categoryApi.middleware),
+		getDefaultMiddleware().concat(expenseApi.middleware, categoryApi.middleware, authApi.middleware),
 })
 
 export type RootState = ReturnType<typeof store.getState>
