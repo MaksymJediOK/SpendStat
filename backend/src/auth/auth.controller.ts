@@ -1,10 +1,9 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, UseGuards } from '@nestjs/common'
 import { AuthService } from './auth.service'
-import { CreateUserDto } from './dto'
+import { CreateUserDto, signInUserDto } from './dto'
 import { Tokens } from './types'
 import { RtGuard } from '../common/guards'
 import { GetCurrentUser, GetCurrentUserId, Public } from '../common/decorators'
-import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController {
@@ -20,10 +19,9 @@ export class AuthController {
     @Public()
     @Post('/local/signin')
     @HttpCode(HttpStatus.OK)
-    signInLocal(@Body() dto: CreateUserDto): Promise<Tokens> {
+    signInLocal(@Body() dto: signInUserDto): Promise<Tokens> {
         return this.authService.signInLocal(dto)
     }
-
 
     @Post('/logout')
     @HttpCode(HttpStatus.OK)
@@ -41,5 +39,4 @@ export class AuthController {
     ) {
         return this.authService.refreshTokens(userId, refreshToken)
     }
-
 }

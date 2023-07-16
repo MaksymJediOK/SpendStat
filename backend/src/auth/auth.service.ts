@@ -1,6 +1,6 @@
 import { ForbiddenException, Injectable } from '@nestjs/common'
 import { PrismaService } from '../prisma/prisma.service'
-import { CreateUserDto } from './dto'
+import { CreateUserDto, signInUserDto } from './dto'
 import { JwtPayload, Tokens } from './types'
 import { JwtService } from '@nestjs/jwt'
 import * as bcrypt from 'bcrypt'
@@ -32,7 +32,7 @@ export class AuthService {
 
         return tokens
     }
-    async signInLocal(dto: CreateUserDto): Promise<Tokens> {
+    async signInLocal(dto: signInUserDto): Promise<Tokens> {
         const user = await this.prisma.user.findUnique({
             where: {
                 email: dto.email,

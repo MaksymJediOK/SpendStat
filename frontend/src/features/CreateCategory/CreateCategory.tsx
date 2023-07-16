@@ -13,3 +13,5 @@ export const CreateCategory = () => {
 		</Modal>
 	)
 }
+
+//Todo add toast on success

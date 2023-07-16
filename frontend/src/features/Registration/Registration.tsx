@@ -6,9 +6,12 @@ import { registrationSchema } from './schemas/registrationSchema.ts'
 import { ErrorMsg } from 'UI/ErrorMsg'
 import { RegistrationData } from 'features/Registration/types'
 import { useRegistrationMutation } from 'features/Registration/api'
+import { Link, useNavigate } from 'react-router-dom'
+import { RoundedButton } from 'UI/Buttons/RoundedButton'
 
 export const Registration = () => {
 	const [register] = useRegistrationMutation()
+	const navigate = useNavigate()
 
 	const {
 		control,
@@ -22,8 +25,9 @@ export const Registration = () => {
 
 	const onSubmit = async (formData: RegistrationData) => {
 		try {
-			const result = await register(formData).unwrap()
-			localStorage.setItem('token', result.access_token)
+			const { access_token } = await register(formData).unwrap()
+			localStorage.setItem('token', access_token)
+			navigate('/home')
 		} catch (e) {
 			console.log(e)
 		}
@@ -42,6 +46,9 @@ export const Registration = () => {
 					<div className='mt-4 flex justify-center'>
 						<SubmitButton buttonText='Register' />
 					</div>
+					<Link to='/login' className='mt-4 flex justify-center'>
+						<RoundedButton color='black' type='button'>Already have an account ?</RoundedButton>
+					</Link>
 				</form>
 			</div>
 		</div>
