@@ -27,9 +27,11 @@ export const Registration = () => {
 		try {
 			const { access_token } = await register(formData).unwrap()
 			localStorage.setItem('token', access_token)
-			navigate('/home')
 		} catch (e) {
 			console.log(e)
+		}
+		finally {
+			navigate('/home')
 		}
 	}
 

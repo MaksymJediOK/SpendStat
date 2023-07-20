@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { currencyModalReducer } from 'features/ChangeCurrency/reducer'
 import { authApi, expenseApi, categoryApi } from '../services'
-import { modalsReducer } from './reducers'
+import { drawerReducer, modalsReducer } from './reducers'
 
 const rootReducer = combineReducers({
 	currencyModal: currencyModalReducer,
@@ -9,6 +9,7 @@ const rootReducer = combineReducers({
 	[expenseApi.reducerPath]: expenseApi.reducer,
 	[categoryApi.reducerPath]: categoryApi.reducer,
 	[authApi.reducerPath]: authApi.reducer,
+	drawer: drawerReducer,
 })
 
 export const store = configureStore({

@@ -6,7 +6,7 @@ import { toggleCurrencyModal } from 'features/ChangeCurrency/reducer'
 import { toast } from 'react-toastify'
 
 export const ChangeCurrency = () => {
-	const [_, setCurrency] = useLocalStorage('dollar', 'currency')
+	const [_, setCurrency] = useLocalStorage('\u0024', 'currency')
 	const dispatch = useAppDispatch()
 
 	const notify = () => {
@@ -34,11 +34,11 @@ export const ChangeCurrency = () => {
 					return (
 						<li
 							className='border-r-2 font-semibold text-4xl flex items-center flex-col cursor-pointer'
-							data-curr={item.name}
+							data-curr={item.value}
 							key={item.name}
 						>
 							{item.value} <br />{' '}
-							<span className='font-sans text-base' data-curr={item.name}>
+							<span className='font-sans text-base' data-curr={item.value}>
 								{item.name}
 							</span>
 						</li>
