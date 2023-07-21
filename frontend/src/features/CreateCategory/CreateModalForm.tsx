@@ -4,6 +4,7 @@ import { ErrorMsg } from 'UI/ErrorMsg'
 import { RoundedButton } from 'UI/Buttons/RoundedButton'
 import { NewCategory } from 'features/CreateCategory/types/NewCategory.ts'
 import { useCreateNewCategoryMutation } from 'features/CreateCategory/api'
+import { categoryToast } from 'features/CreateCategory/helpers/toast.ts'
 
 export const CreateModalForm = () => {
 	const [createCategory] = useCreateNewCategoryMutation()
@@ -20,6 +21,7 @@ export const CreateModalForm = () => {
 	const handleCreateCategory = (data: NewCategory) => {
 		createCategory(data)
 			.unwrap()
+			.then(() => categoryToast())
 			.catch((errors: any) => console.log(errors)) //create block to show errors
 	}
 	return (
