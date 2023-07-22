@@ -16,7 +16,7 @@ export const Header = () => {
 				<div className='col-span-1 col-start-2'>
 					<h4 className='text-base font-semibold'>All accounts</h4>
 					<h2 className='text-xl font-semibold tracking-wide'>-17 778$</h2>
-					<div className='flex items-center justify-center text-center'>
+					<div className='flex flex-col items-center justify-center text-center md:flex-row'>
 						<div className='mx-2 rounded-md bg-black p-1'>
 							<span className='px-1 text-[16px] font-bold text-white'>30</span>
 						</div>

@@ -7,10 +7,10 @@ interface AddButtonProps {
 export const AddButton = ({ onClick }: AddButtonProps) => {
 	return (
 		<button
-			className='flex h-14 w-14 items-center justify-center rounded-full bg-gray-300 focus:outline-none'
+			className='flex h-14 w-14 items-center justify-center border-2 border-blue-400 rounded-full focus:outline-none mt-14'
 			onClick={onClick}
 		>
-			<FaPlus className='text-gray-600' />
+			<FaPlus className='text-blue-400' />
 		</button>
 	)
 }
