@@ -10,7 +10,7 @@ export const Category = ({ title, expenses }: CategoryProps) => {
 	let currency = localStorage.getItem('currency')
 	if (currency) currency = JSON.parse(currency)
 	return (
-		<div className='flex h-12 w-12 flex-col items-center gap-0.5 md:gap-2 lg:gap-2'>
+		<div className='flex flex-col items-center gap-0.5 md:gap-2 lg:gap-2 '>
 			<h2 className='text-sm font-semibold text-black lg:text-base'>{title}</h2>
 			<RoundIcon
 				color={'bg-blue-500'}
