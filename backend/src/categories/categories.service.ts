@@ -32,6 +32,13 @@ export class CategoriesService {
         })
     }
 
+    async deleteCategory(categoryId: number) {
+        return this.prisma.category.delete({
+            where: {
+                id: categoryId,
+            },
+        })
+    }
 
     private async addExpenseValueToCategory(categoryId: number, expenseValue: number) {
         await this.prisma.category.update({

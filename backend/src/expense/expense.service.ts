@@ -61,6 +61,7 @@ export class ExpenseService {
             (category: Category & { expenses: Expense[] }) => {
                 const expValues = this.getAllTimeExpensesValueInCategory(category.expenses)
                 return {
+                    categoryId: category.id,
                     categoryTitle: category.title,
                     expenseValue: expValues,
                 }
