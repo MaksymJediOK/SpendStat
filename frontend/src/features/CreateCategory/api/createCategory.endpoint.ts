@@ -9,6 +9,7 @@ const extendedCategoryApi = categoryApi.injectEndpoints({
 				method: 'POST',
 				body: body,
 			}),
+			invalidatesTags: [{ type: 'Category', id: 'LIST' }],
 		}),
 	}),
 	overrideExisting: false,

@@ -24,7 +24,7 @@ export const CategoryList = () => {
 
 	if (error && 'status' in error) {
 		if (error.status === 401) {
-			return <Navigate to='/registration' relative='path' />
+			return <Navigate to='/expired' relative='path' />
 		}
 	}
 	return (

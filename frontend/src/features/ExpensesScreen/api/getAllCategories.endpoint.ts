@@ -10,9 +10,18 @@ const extendedCategoryApi = categoryApi.injectEndpoints({
 					filter,
 				},
 			}),
+			providesTags: (result) =>
+				result
+					? [
+							...result.map(({ }, index) => ({ type: 'Category' as const, index })),
+							{ type: 'Category', id: 'LIST' },
+					  ]
+					: [{ type: 'Category', id: 'LIST' }],
 		}),
 	}),
 	overrideExisting: false,
 })
 
 export const { useGetAllExpensesQuery } = extendedCategoryApi
+
+//Todo add id field from query

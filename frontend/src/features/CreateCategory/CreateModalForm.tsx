@@ -5,10 +5,12 @@ import { RoundedButton } from 'UI/Buttons/RoundedButton'
 import { NewCategory } from 'features/CreateCategory/types/NewCategory.ts'
 import { useCreateNewCategoryMutation } from 'features/CreateCategory/api'
 import { categoryToast } from 'features/CreateCategory/helpers/toast.ts'
+import { useAppDispatch } from 'hooks/redux.ts'
+import { toggleCategoryModal } from 'store/reducers'
 
 export const CreateModalForm = () => {
 	const [createCategory] = useCreateNewCategoryMutation()
-
+	const dispatch = useAppDispatch()
 	const {
 		control,
 		handleSubmit,
@@ -21,7 +23,10 @@ export const CreateModalForm = () => {
 	const handleCreateCategory = (data: NewCategory) => {
 		createCategory(data)
 			.unwrap()
-			.then(() => categoryToast())
+			.then(() => {
+				dispatch(toggleCategoryModal(false))
+				categoryToast()
+			})
 			.catch((errors: any) => console.log(errors)) //create block to show errors
 	}
 	return (
