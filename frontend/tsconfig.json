@@ -29,6 +29,7 @@
       "hooks/*": ["hooks/*"],
       "services/*": ["services/*"],
       "store/*": ["store/*"],
+      "utils/*": ["utils/*"],
     }
   },
   "include": ["src"],

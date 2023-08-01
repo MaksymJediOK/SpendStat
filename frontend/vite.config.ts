@@ -13,6 +13,7 @@ export default defineConfig({
 			hooks: '/src/hooks',
 			services: '/src/services',
 			store: '/src/store',
+			utils: '/src/utils',
 		},
 	},
 })

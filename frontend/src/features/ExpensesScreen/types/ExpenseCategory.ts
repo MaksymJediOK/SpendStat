@@ -1,4 +1,4 @@
 export interface ExpenseCategory {
-	categoryTitle: string,
+	categoryTitle: string
 	expenseValue: number
 }

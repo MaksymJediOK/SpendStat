@@ -4,14 +4,14 @@ import { AddButton } from 'UI/Buttons/AddButton'
 import { toggleCategoryModal } from 'store/reducers'
 import { useAppDispatch } from 'hooks/redux.ts'
 import { useGetAllExpensesQuery } from 'features/ExpensesScreen/api'
+import { Navigate } from 'react-router-dom'
 
 export const CategoryList = () => {
-	const { data, isLoading } = useGetAllExpensesQuery('today', {
+	const { data, error, isLoading } = useGetAllExpensesQuery('today', {
 		refetchOnMountOrArgChange: true,
 	})
-	if (!isLoading) console.log(data)
-
 	const dispatch = useAppDispatch()
+	//will dispatch the modal window
 	const handleClick = (event: React.SyntheticEvent<EventTarget>) => {
 		if (!(event.target instanceof HTMLDivElement) || !(event.target instanceof HTMLDivElement)) {
 			return
@@ -20,6 +20,12 @@ export const CategoryList = () => {
 		// const target = event.target as HTMLDivElement | SVGElement
 		// const circle = target.getAttribute('data-circle')
 		// console.log('Circle:', circle)
+	}
+
+	if (error && 'status' in error) {
+		if (error.status === 401) {
+			return <Navigate to='/registration' relative='path' />
+		}
 	}
 	return (
 		<div

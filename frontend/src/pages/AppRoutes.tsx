@@ -4,6 +4,7 @@ import { Registration } from 'features/Registration'
 import { SignIn } from 'features/SignIn'
 import { TestPage } from './Testpage/TestPage.tsx'
 import { Profile } from './Profile'
+import { ExpiredSessionPage } from './ExpiredSession'
 
 export const AppRoutes = () => {
 	return (
@@ -14,6 +15,7 @@ export const AppRoutes = () => {
 			<Route path='/test' element={<TestPage />} />
 			<Route path='/profile' element={<Profile />} />
 			<Route path='/home' element={<App />} />
+			<Route path='/expired' element={<ExpiredSessionPage />} />
 		</Routes>
 	)
 }
