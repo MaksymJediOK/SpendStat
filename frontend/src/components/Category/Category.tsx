@@ -10,10 +10,10 @@ export const Category = ({ title, expenses }: CategoryProps) => {
 	let currency = localStorage.getItem('currency')
 	if (currency) currency = JSON.parse(currency)
 	return (
-		<div className='flex flex-col items-center gap-0.5 md:gap-2 lg:gap-2 '>
+		<div className='category flex flex-col items-center gap-0.5 md:gap-2 lg:gap-2'>
 			<h2 className='text-sm font-semibold text-black lg:text-base'>{title}</h2>
 			<RoundIcon
-				color={'bg-blue-500'}
+				color={'bg-[#f1c40f]'}
 				icon={<HiShoppingCart data-circle='hello' size={24} color='white' />}
 			/>
 			<span className='text-sm text-gray-400 lg:text-base'>

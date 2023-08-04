@@ -25,8 +25,11 @@ export const SignIn = () => {
 	const onSubmit = async (formData: SignInData) => {
 		try {
 			const { access_token } = await signIn(formData).unwrap()
-			localStorage.setItem('token', access_token)
-			navigate('/home')
+			await new Promise<void>((resolve) => {
+				localStorage.setItem('token', access_token)
+				resolve()
+			})
+			navigate('/home', { relative: 'path' })
 		} catch (e) {
 			console.log(e)
 		}
@@ -44,7 +47,9 @@ export const SignIn = () => {
 						<SubmitButton buttonText='Sign in' />
 					</div>
 					<Link to='/registration' className='mt-4 flex justify-center'>
-						<RoundedButton color='black' type='button'>Don't have an account ?</RoundedButton>
+						<RoundedButton color='black' type='button'>
+							Don't have an account ?
+						</RoundedButton>
 					</Link>
 				</form>
 			</div>

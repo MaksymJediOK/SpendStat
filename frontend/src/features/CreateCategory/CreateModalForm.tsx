@@ -7,8 +7,8 @@ import { useCreateNewCategoryMutation } from 'features/CreateCategory/api'
 import { categoryToast } from 'features/CreateCategory/helpers/toast.ts'
 import { useAppDispatch } from 'hooks/redux.ts'
 import { toggleCategoryModal } from 'store/reducers'
-import { ColourOption } from 'features/CreateCategory/types'
 import { colourOptions } from './data'
+import { colourStyles, CustomOption } from './select-styles'
 
 export const CreateModalForm = () => {
 	const [createCategory] = useCreateNewCategoryMutation()
@@ -24,14 +24,14 @@ export const CreateModalForm = () => {
 
 	const handleCreateCategory = (data: NewCategory) => {
 		console.log(data)
-		// createCategory(data)
-		// 	.unwrap()
-		// 	.then(() => {
-		// 		dispatch(toggleCategoryModal(false))
-		// 		categoryToast()
-		// 	})
-		// 	.catch((errors: any) => console.log(errors))
-		//create block to show errors
+		createCategory(data)
+			.unwrap()
+			.then(() => {
+				dispatch(toggleCategoryModal(false))
+				categoryToast()
+			})
+			.catch((errors: any) => console.log(errors))
+		// create block to show errors
 	}
 	return (
 		<form
@@ -41,7 +41,14 @@ export const CreateModalForm = () => {
 			<Input name='title' type='text' label='Name for your category' control={control} />
 			{errors.title && <ErrorMsg text={errors?.title?.message} />}
 
-			<SelectInput control={control} name='color' options={colourOptions} placeholder='Choose a color' />
+			<SelectInput
+				control={control}
+				name='color'
+				options={colourOptions}
+				placeholder='Choose a color'
+				styles={colourStyles}
+				Options={CustomOption}
+			/>
 			{errors.color && <ErrorMsg text={errors?.color?.message} />}
 			<Input name='icon' type='text' label='Choose icon' control={control} />
 			{errors.icon && <ErrorMsg text={errors?.icon?.message} />}

@@ -5,7 +5,7 @@ import { toggleExpenseModal } from 'store/reducers'
 // import { useForm } from 'react-hook-form'
 // import { Expense } from 'types/Expense.ts'
 
-export const AddExpense = () => {
+export const AddExpensePopup = () => {
 	const isOpen = useAppSelector((state) => state.manyModals.expenseModal)
 	const dispatch = useAppDispatch()
 
@@ -20,7 +20,7 @@ export const AddExpense = () => {
 	return (
 		<>
 			<Modal active={isOpen} setActive={() => dispatch(toggleExpenseModal(false))}>
-				<div className='py-2 md:py-3'></div>
+				<div className='py-2 md:py-3'>Some content</div>
 			</Modal>
 		</>
 	)

@@ -1,25 +1,24 @@
 import React from 'react'
 import { Category } from 'components/Category'
 import { AddButton } from 'UI/Buttons/AddButton'
-import { toggleCategoryModal } from 'store/reducers'
+import { toggleCategoryModal, toggleExpenseModal } from 'store/reducers'
 import { useAppDispatch } from 'hooks/redux.ts'
 import { useGetAllExpensesQuery } from 'features/ExpensesScreen/api'
 import { Navigate } from 'react-router-dom'
 
 export const CategoryList = () => {
+	const dispatch = useAppDispatch()
 	const { data, error, isLoading } = useGetAllExpensesQuery('today', {
 		refetchOnMountOrArgChange: true,
 	})
-	const dispatch = useAppDispatch()
-	//will dispatch the modal window
-	const handleClick = (event: React.SyntheticEvent<EventTarget>) => {
-		if (!(event.target instanceof HTMLDivElement) || !(event.target instanceof HTMLDivElement)) {
-			return
+
+	const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+		const targetElement = event.target as HTMLElement
+		const categoryElement = targetElement.closest('.category')
+		if (categoryElement) {
+			console.log(categoryElement)
+			dispatch(toggleExpenseModal(true))
 		}
-		// console.log('ev.target', event.target.dataset['circle'])
-		// const target = event.target as HTMLDivElement | SVGElement
-		// const circle = target.getAttribute('data-circle')
-		// console.log('Circle:', circle)
 	}
 
 	if (error && 'status' in error) {
