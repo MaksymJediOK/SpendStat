@@ -1,4 +1,4 @@
-export interface ColourOption {
+export interface OptionsType {
 	readonly value: string
 	readonly label: string
 }

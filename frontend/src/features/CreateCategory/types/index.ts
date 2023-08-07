@@ -1,1 +1,1 @@
-export type { ColourOption } from './ColourOption.ts'
+export type { OptionsType } from './OptionsType.ts'

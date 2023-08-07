@@ -1,6 +1,6 @@
-import { ColourOption } from 'features/CreateCategory/types'
+import { OptionsType } from 'features/CreateCategory/types'
 
-export const colourOptions: readonly ColourOption[] = [
+export const colourOptions: readonly OptionsType[] = [
 	{ value: '#00B8D9', label: 'Ocean' },
 	{ value: '#0052CC', label: 'Blue' },
 	{ value: '#5243AA', label: 'Purple' },
@@ -11,4 +11,4 @@ export const colourOptions: readonly ColourOption[] = [
 	{ value: '#00875A', label: 'Forest' },
 	{ value: '#253858', label: 'Slate' },
 	{ value: '#666666', label: 'Silver' },
-];
+]

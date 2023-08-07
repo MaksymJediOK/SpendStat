@@ -7,8 +7,10 @@ import { useCreateNewCategoryMutation } from 'features/CreateCategory/api'
 import { categoryToast } from 'features/CreateCategory/helpers/toast.ts'
 import { useAppDispatch } from 'hooks/redux.ts'
 import { toggleCategoryModal } from 'store/reducers'
-import { colourOptions } from './data'
-import { colourStyles, CustomOption } from './select-styles'
+import { colourOptions, iconOptions } from './data'
+import { colourStyles, CustomOption, iconStyles } from './select-styles'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { categoryResolver } from './schemas'
 
 export const CreateModalForm = () => {
 	const [createCategory] = useCreateNewCategoryMutation()
@@ -20,6 +22,7 @@ export const CreateModalForm = () => {
 	} = useForm<NewCategory>({
 		mode: 'onBlur',
 		defaultValues: { title: '', color: colourOptions[0].value, icon: 'shop' },
+		resolver: yupResolver(categoryResolver),
 	})
 
 	const handleCreateCategory = (data: NewCategory) => {
@@ -50,7 +53,13 @@ export const CreateModalForm = () => {
 				Options={CustomOption}
 			/>
 			{errors.color && <ErrorMsg text={errors?.color?.message} />}
-			<Input name='icon' type='text' label='Choose icon' control={control} />
+			<SelectInput
+				name='icon'
+				placeholder='Choose an icon'
+				control={control}
+				options={iconOptions}
+				styles={iconStyles}
+			/>
 			{errors.icon && <ErrorMsg text={errors?.icon?.message} />}
 
 			<div className='mt-4 flex justify-center'>
@@ -61,5 +70,3 @@ export const CreateModalForm = () => {
 		</form>
 	)
 }
-
-// Todo use react-select lib for color and icons | resolvers
