@@ -1,1 +1,1 @@
-export type { OptionsType } from './OptionsType.ts'
+export type { IconOptionType } from './IconOptionType.ts'

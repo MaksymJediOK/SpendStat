@@ -6,16 +6,17 @@ export const ExpiredSessionPage = () => {
 		<div className='flex h-screen w-screen flex-col  items-center justify-center  bg-gray-200'>
 			<h2 className='text-2xl font-semibold text-black'>Your session expired</h2>
 			<div className='flex flex-wrap gap-4 md:flex-nowrap md:gap-5'>
-				<RoundedButton color='black' type='button'>
-					<Link to='/login' relative='path'>
+				<Link to='/login' relative='path'>
+					<RoundedButton color='black' type='button'>
 						Login
-					</Link>
-				</RoundedButton>
-				<RoundedButton color='black' type='button'>
-					<Link to='/registration' relative='path'>
+					</RoundedButton>
+				</Link>
+
+				<Link to='/registration' relative='path'>
+					<RoundedButton color='black' type='button'>
 						Sign Up
-					</Link>
-				</RoundedButton>
+					</RoundedButton>
+				</Link>
 			</div>
 		</div>
 	)

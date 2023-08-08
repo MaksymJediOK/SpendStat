@@ -1,6 +1,6 @@
-import { OptionsType } from 'features/CreateCategory/types'
+import { BaseSelectOption } from 'types'
 
-export const colourOptions: readonly OptionsType[] = [
+export const colourOptions: readonly BaseSelectOption[] = [
 	{ value: '#00B8D9', label: 'Ocean' },
 	{ value: '#0052CC', label: 'Blue' },
 	{ value: '#5243AA', label: 'Purple' },

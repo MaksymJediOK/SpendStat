@@ -8,9 +8,10 @@ import { categoryToast } from 'features/CreateCategory/helpers/toast.ts'
 import { useAppDispatch } from 'hooks/redux.ts'
 import { toggleCategoryModal } from 'store/reducers'
 import { colourOptions, iconOptions } from './data'
-import { colourStyles, CustomOption, iconStyles } from './select-styles'
+import { colourStyles, CustomOption, IconComponent, iconStyles } from './select-styles'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { categoryResolver } from './schemas'
+import { IconOptionType } from 'features/CreateCategory/types'
 
 export const CreateModalForm = () => {
 	const [createCategory] = useCreateNewCategoryMutation()
@@ -18,6 +19,7 @@ export const CreateModalForm = () => {
 	const {
 		control,
 		handleSubmit,
+		reset,
 		formState: { errors },
 	} = useForm<NewCategory>({
 		mode: 'onBlur',
@@ -32,6 +34,7 @@ export const CreateModalForm = () => {
 			.then(() => {
 				dispatch(toggleCategoryModal(false))
 				categoryToast()
+				reset()
 			})
 			.catch((errors: any) => console.log(errors))
 		// create block to show errors
@@ -50,15 +53,16 @@ export const CreateModalForm = () => {
 				options={colourOptions}
 				placeholder='Choose a color'
 				styles={colourStyles}
-				Options={CustomOption}
+				CustomOption={CustomOption}
 			/>
 			{errors.color && <ErrorMsg text={errors?.color?.message} />}
-			<SelectInput
+			<SelectInput<NewCategory, IconOptionType>
 				name='icon'
 				placeholder='Choose an icon'
 				control={control}
 				options={iconOptions}
 				styles={iconStyles}
+				CustomOption={IconComponent}
 			/>
 			{errors.icon && <ErrorMsg text={errors?.icon?.message} />}
 

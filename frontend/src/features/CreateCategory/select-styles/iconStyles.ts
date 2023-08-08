@@ -1,7 +1,7 @@
 import { StylesConfig } from 'react-select'
-import { OptionsType } from 'features/CreateCategory/types'
+import { IconOptionType } from 'features/CreateCategory/types'
 
-export const iconStyles: StylesConfig<OptionsType, false> = {
+export const iconStyles: StylesConfig<IconOptionType, false> = {
 	control: (styles) => ({
 		...styles,
 		borderRadius: '0.5rem',
