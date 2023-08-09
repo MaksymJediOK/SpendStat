@@ -3,15 +3,15 @@ import { Input, SelectInput } from 'components/Input'
 import { ErrorMsg } from 'UI/ErrorMsg'
 import { RoundedButton } from 'UI/Buttons/RoundedButton'
 import { NewCategory } from 'features/CreateCategory/types/NewCategory.ts'
-import { useCreateNewCategoryMutation } from 'features/CreateCategory/api'
-import { categoryToast } from 'features/CreateCategory/helpers/toast.ts'
+import { useCreateNewCategoryMutation } from './api'
+import { categoryToast } from './helpers'
 import { useAppDispatch } from 'hooks/redux.ts'
 import { toggleCategoryModal } from 'store/reducers'
 import { colourOptions, iconOptions } from './data'
 import { colourStyles, CustomOption, IconComponent, iconStyles } from './select-styles'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { categoryResolver } from './schemas'
-import { IconOptionType } from 'features/CreateCategory/types'
+import { IconOptionType } from './types'
 
 export const CreateModalForm = () => {
 	const [createCategory] = useCreateNewCategoryMutation()
@@ -23,7 +23,7 @@ export const CreateModalForm = () => {
 		formState: { errors },
 	} = useForm<NewCategory>({
 		mode: 'onBlur',
-		defaultValues: { title: '', color: colourOptions[0].value, icon: 'shop' },
+		defaultValues: { title: '', color: 'bg-blue-400', icon: 'shop' },
 		resolver: yupResolver(categoryResolver),
 	})
 

@@ -34,8 +34,8 @@ export const CategoryList = () => {
 			{isLoading ? (
 				<h2>Loading...</h2>
 			) : (
-				data?.map(({ categoryTitle, expenseValue }) => {
-					return <Category key={categoryTitle} title={categoryTitle} expenses={expenseValue} />
+				data?.map(({ categoryTitle, expenseValue,color }) => {
+					return <Category key={categoryTitle} title={categoryTitle} expenses={expenseValue} color={color}/>
 				})
 			)}
 			<div className='grid place-items-center'>

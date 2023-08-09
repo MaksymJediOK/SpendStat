@@ -64,6 +64,8 @@ export class ExpenseService {
                     categoryId: category.id,
                     categoryTitle: category.title,
                     expenseValue: expValues,
+                    color: category.color,
+                    icon: category.icon,
                 }
             },
         )
@@ -77,5 +79,4 @@ export class ExpenseService {
         }, 0)
     }
 
-    private
 }

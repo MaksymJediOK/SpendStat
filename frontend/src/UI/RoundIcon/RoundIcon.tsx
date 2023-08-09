@@ -5,6 +5,8 @@ interface RoundIconProps {
 	icon: React.ReactNode
 }
 
-export const RoundIcon = ({ color, icon }: RoundIconProps) => {
-	return <div className={`cursor-pointer rounded-full p-2 lg:p-4 ${color}`}>{icon}</div>
-}
+export const RoundIcon = ({ color, icon }: RoundIconProps) => (
+	<div className={`cursor-pointer rounded-full p-2 lg:p-4 ${color}`} >
+		{icon}
+	</div>
+)

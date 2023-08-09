@@ -8,7 +8,7 @@ import {
 	AiFillTags,
 	AiOutlineCar,
 } from 'react-icons/ai'
-import { IconOptionType } from 'features/CreateCategory/types/IconOptionType.ts'
+import { IconOptionType } from '../types'
 
 export const iconOptions: IconOptionType[] = [
 	{ value: 'shopping', label: 'Shopping', icon: AiFillShopping },
