@@ -10,7 +10,7 @@ import {
 } from 'react-icons/ai'
 import { IconOptionType } from '../types'
 
-export const iconOptions: IconOptionType[] = [
+const iconOptions: IconOptionType[] = [
 	{ value: 'shopping', label: 'Shopping', icon: AiFillShopping },
 	{ value: 'book', label: 'Book', icon: AiFillBook },
 	{ value: 'heart', label: 'Heart', icon: AiFillHeart },
@@ -20,3 +20,16 @@ export const iconOptions: IconOptionType[] = [
 	{ value: 'car', label: 'Car', icon: AiOutlineCar },
 	{ value: 'compass', label: 'Compass', icon: AiFillCompass },
 ]
+
+const stringToIconMapping = {
+	shopping: AiFillShopping,
+	book: AiFillBook,
+	heart: AiFillHeart,
+	skin: AiFillSkin,
+	home: AiOutlineHome,
+	tags: AiFillTags,
+	car: AiOutlineCar,
+	compass: AiFillCompass,
+}
+
+export { iconOptions, stringToIconMapping }
