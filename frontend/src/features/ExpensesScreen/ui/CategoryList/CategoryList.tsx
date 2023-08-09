@@ -34,9 +34,10 @@ export const CategoryList = () => {
 			{isLoading ? (
 				<h2>Loading...</h2>
 			) : (
-				data?.map(({ categoryTitle, expenseValue, color, icon }) => {
+				data?.map(({ categoryId, categoryTitle, expenseValue, color, icon }) => {
 					return (
 						<Category
+							id={categoryId}
 							key={categoryTitle}
 							title={categoryTitle}
 							expenses={expenseValue}
