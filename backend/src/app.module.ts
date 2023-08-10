@@ -7,7 +7,7 @@ import { CategoriesModule } from './categories/categories.module'
 import { UserModule } from './user/user.module'
 import { AuthModule } from './auth/auth.module'
 import { AtGuard } from './common/guards'
-import { ExpenseModule } from './expense/expense.module';
+import { ExpenseModule } from './expense/expense.module'
 
 @Module({
     controllers: [CategoriesController],

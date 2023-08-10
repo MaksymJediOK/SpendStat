@@ -1,11 +1,10 @@
 import { Injectable } from '@nestjs/common'
 import { PrismaService } from '../prisma/prisma.service'
 import { CreateCategoryDto } from './dto/create-category.dto'
-import { CategoriesRepository } from './sub-services/categories.repository'
 
 @Injectable()
 export class CategoriesService {
-    constructor(private prisma: PrismaService, private categoriesRepository: CategoriesRepository) {}
+    constructor(private prisma: PrismaService) {}
 
     async createCategory(userId: number, dto: CreateCategoryDto) {
         return this.prisma.category.create({
@@ -42,7 +41,11 @@ export class CategoriesService {
     }
 
     async getCategoryInfo(categoryId: number) {
-        return this.categoriesRepository.findCategoryById(categoryId)
+        return this.prisma.category.findUnique({
+            where: {
+                id: categoryId,
+            },
+        })
     }
 
     private async addExpenseValueToCategory(categoryId: number, expenseValue: number) {

@@ -16,8 +16,8 @@ export const CategoryList = () => {
 		const targetElement = event.target as HTMLElement
 		const categoryElement = targetElement.closest('.category')
 		if (categoryElement) {
-			console.log(categoryElement)
-			dispatch(toggleExpenseModal(true))
+			const categoryId = categoryElement.getAttribute('data-categoryid')
+			dispatch(toggleExpenseModal({ isOpen: true, id: categoryId }))
 		}
 	}
 
