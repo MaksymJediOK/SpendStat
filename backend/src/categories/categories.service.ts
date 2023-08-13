@@ -40,10 +40,11 @@ export class CategoriesService {
         })
     }
 
-    async getCategoryInfo(categoryId: number) {
+    async getCategoryInfo(categoryId: string) {
+        const parsedId = parseInt(categoryId)
         return this.prisma.category.findUnique({
             where: {
-                id: categoryId,
+                id: parsedId,
             },
         })
     }

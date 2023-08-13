@@ -20,7 +20,7 @@ export class CategoriesController {
         return this.categoriesService.deleteCategory(categoryId)
     }
     @Get(':id')
-    getCategoryById(@Param('id') categoryId: number) {
+    getCategoryById(@Param('id') categoryId: string) {
         return this.categoriesService.getCategoryInfo(categoryId)
     }
 }
