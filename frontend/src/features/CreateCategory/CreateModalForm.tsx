@@ -40,37 +40,39 @@ export const CreateModalForm = () => {
 		// create block to show errors
 	}
 	return (
-		<form
-			className='flex flex-col items-center gap-2 py-3 md:gap-5'
-			onSubmit={handleSubmit(handleCreateCategory)}
-		>
-			<Input name='title' type='text' label='Name for your category' control={control} />
-			{errors.title && <ErrorMsg text={errors?.title?.message} />}
+		<div className='px-5 py-3 md:px-9 md:py-6'>
+			<form
+				className='flex flex-col items-center gap-2 py-3 md:gap-5'
+				onSubmit={handleSubmit(handleCreateCategory)}
+			>
+				<Input name='title' type='text' label='Name for your category' control={control} />
+				{errors.title && <ErrorMsg text={errors?.title?.message} />}
 
-			<SelectInput
-				control={control}
-				name='color'
-				options={colourOptions}
-				placeholder='Choose a color'
-				styles={colourStyles}
-				CustomOption={CustomOption}
-			/>
-			{errors.color && <ErrorMsg text={errors?.color?.message} />}
-			<SelectInput<NewCategory, IconOptionType>
-				name='icon'
-				placeholder='Choose an icon'
-				control={control}
-				options={iconOptions}
-				styles={iconStyles}
-				CustomOption={IconComponent}
-			/>
-			{errors.icon && <ErrorMsg text={errors?.icon?.message} />}
+				<SelectInput
+					control={control}
+					name='color'
+					options={colourOptions}
+					placeholder='Choose a color'
+					styles={colourStyles}
+					CustomOption={CustomOption}
+				/>
+				{errors.color && <ErrorMsg text={errors?.color?.message} />}
+				<SelectInput<NewCategory, IconOptionType>
+					name='icon'
+					placeholder='Choose an icon'
+					control={control}
+					options={iconOptions}
+					styles={iconStyles}
+					CustomOption={IconComponent}
+				/>
+				{errors.icon && <ErrorMsg text={errors?.icon?.message} />}
 
-			<div className='mt-4 flex justify-center'>
-				<RoundedButton color='black' type='submit'>
-					Create
-				</RoundedButton>
-			</div>
-		</form>
+				<div className='mt-4 flex justify-center'>
+					<RoundedButton color='black' type='submit'>
+						Create
+					</RoundedButton>
+				</div>
+			</form>
+		</div>
 	)
 }

@@ -24,26 +24,28 @@ export const ChangeCurrency = () => {
 	}
 
 	return (
-		<ul
-			className='py-2 px-1 grid grid-cols-1 gap-3 md:gap-4 grid-rows-3
-			md:grid-rows-1 md:grid-cols-3 list-none justify-around items-center'
-			onClick={handleChange}
-		>
-			{CurrencyMock.length &&
-				CurrencyMock.map((item) => {
-					return (
-						<li
-							className='border-r-2 font-semibold text-4xl flex items-center flex-col cursor-pointer'
-							data-curr={item.value}
-							key={item.name}
-						>
-							{item.value} <br />{' '}
-							<span className='font-sans text-base' data-curr={item.value}>
-								{item.name}
-							</span>
-						</li>
-					)
-				})}
-		</ul>
+		<div className='px-5 py-3 md:px-9 md:py-6'>
+			<ul
+				className='grid list-none grid-cols-1 grid-rows-3 items-center justify-around gap-3
+				px-1 py-2 md:grid-cols-3 md:grid-rows-1 md:gap-4'
+				onClick={handleChange}
+			>
+				{CurrencyMock.length &&
+					CurrencyMock.map((item) => {
+						return (
+							<li
+								className='flex cursor-pointer flex-col items-center border-r-2 text-4xl font-semibold'
+								data-curr={item.value}
+								key={item.name}
+							>
+								{item.value} <br />{' '}
+								<span className='font-sans text-base' data-curr={item.value}>
+									{item.name}
+								</span>
+							</li>
+						)
+					})}
+			</ul>
+		</div>
 	)
 }
