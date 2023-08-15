@@ -12,7 +12,7 @@ export const AddExpensePopup = () => {
 		<>
 			<Modal active={isOpen} setActive={() => dispatch(toggleExpenseModal({ isOpen: false }))}>
 				<NewExpenseHeader categoryId={id} />
-				<NewExpenseForm />
+				<NewExpenseForm categoryId={id} />
 			</Modal>
 		</>
 	)

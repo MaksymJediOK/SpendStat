@@ -3,7 +3,7 @@ import { colorMapping } from 'utils/colorMapping.ts'
 import { iconMapping } from 'utils/iconMapping.ts'
 import { useGetSingleCategoryQuery } from '../api'
 
-interface NewExpenseProps {
+ interface NewExpenseProps {
 	categoryId: string
 }
 
