@@ -1,9 +1,9 @@
 import { categoryApi } from 'services/category.api.ts'
-import { NewCategory } from 'features/CreateCategory/types/NewCategory.ts'
+import {Category} from 'types'
 
 const extendedCategoryApi = categoryApi.injectEndpoints({
 	endpoints: (build) => ({
-		getSingleCategory: build.query<NewCategory, string>({
+		getSingleCategory: build.query<Category, string>({
 			query: (categoryId: string) => ({
 				url: `categories/${categoryId}`,
 			}),

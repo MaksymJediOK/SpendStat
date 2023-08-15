@@ -1,10 +1,10 @@
 import { categoryApi } from 'services/category.api.ts'
-import { NewCategory } from 'features/CreateCategory/types/NewCategory.ts'
+import { Category } from 'types'
 
 const extendedCategoryApi = categoryApi.injectEndpoints({
 	endpoints: (build) => ({
-		createNewCategory: build.mutation<NewCategory & { userId: number }, NewCategory>({
-			query: (body: NewCategory) => ({
+		createNewCategory: build.mutation<Category & { categoryId: number }, Category>({
+			query: (body: Category) => ({
 				url: 'categories',
 				method: 'POST',
 				body: body,

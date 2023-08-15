@@ -2,14 +2,14 @@ import { useForm } from 'react-hook-form'
 import { Input, SelectInput } from 'components/Input'
 import { ErrorMsg } from 'UI/ErrorMsg'
 import { RoundedButton } from 'UI/Buttons/RoundedButton'
-import { NewCategory } from 'features/CreateCategory/types/NewCategory.ts'
-import { useCreateNewCategoryMutation } from './api'
-import { categoryToast } from './helpers'
+import { Category } from 'types'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useAppDispatch } from 'hooks/redux.ts'
 import { toggleCategoryModal } from 'store/reducers'
+import { useCreateNewCategoryMutation } from './api'
+import { categoryToast } from './helpers'
 import { colourOptions, iconOptions } from './data'
 import { colourStyles, CustomOption, IconComponent, iconStyles } from './select-styles'
-import { yupResolver } from '@hookform/resolvers/yup'
 import { categoryResolver } from './schemas'
 import { IconOptionType } from './types'
 
@@ -21,13 +21,13 @@ export const CreateModalForm = () => {
 		handleSubmit,
 		reset,
 		formState: { errors },
-	} = useForm<NewCategory>({
+	} = useForm<Category>({
 		mode: 'onBlur',
-		defaultValues: { title: '', color: 'bg-blue-400', icon: 'shop' },
+		defaultValues: { title: '', color: 'Ocean', icon: 'shopping' },
 		resolver: yupResolver(categoryResolver),
 	})
 
-	const handleCreateCategory = (data: NewCategory) => {
+	const handleCreateCategory = (data: Category) => {
 		console.log(data)
 		createCategory(data)
 			.unwrap()
@@ -57,7 +57,7 @@ export const CreateModalForm = () => {
 					CustomOption={CustomOption}
 				/>
 				{errors.color && <ErrorMsg text={errors?.color?.message} />}
-				<SelectInput<NewCategory, IconOptionType>
+				<SelectInput<Category, IconOptionType>
 					name='icon'
 					placeholder='Choose an icon'
 					control={control}
