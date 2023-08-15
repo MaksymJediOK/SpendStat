@@ -6,7 +6,7 @@ export const CustomOption = ({ label, innerProps }: OptionProps<BaseSelectOption
 	const dynamicClass = colorMapping(label)
 	return (
 		<div {...innerProps} className='flex cursor-pointer items-center px-3 py-2 hover:bg-neutral-300'>
-			<div className={`mr-2 h-4 w-4 rounded-full ${dynamicClass}`} />
+			<div className={`mr-2 h-4 w-4 rounded-full ${dynamicClass[0]}`} />
 			{label}
 		</div>
 	)

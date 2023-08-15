@@ -17,7 +17,7 @@ export const Category = ({ id, title, expenses, color = '#000', icon }: Category
 	return (
 		<div className='category flex flex-col items-center gap-0.5 md:gap-2 lg:gap-2' data-categoryid={id}>
 			<h2 className='text-sm font-semibold text-black lg:text-base'>{title}</h2>
-			<RoundIcon color={dynamicClass} icon={<UserIcon size={24} color='white' />} />
+			<RoundIcon color={dynamicClass[0]} icon={<UserIcon size={24} color='white' />} />
 			<span className='text-sm text-gray-400 lg:text-base'>
 				{expenses} {currency}
 			</span>
