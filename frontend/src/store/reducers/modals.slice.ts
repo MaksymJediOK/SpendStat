@@ -5,9 +5,14 @@ interface ExpenseModalProps {
 	id?: string | null
 }
 
+interface TimeRangeModalProps extends Omit<ExpenseModalProps, 'id'> {
+	filter?: string
+}
+
 interface initialStateProps {
 	expenseModal: ExpenseModalProps
 	categoryModal: boolean
+	timeRangeModal: TimeRangeModalProps
 }
 
 const initialState: initialStateProps = {
@@ -16,6 +21,10 @@ const initialState: initialStateProps = {
 		id: null,
 	},
 	categoryModal: false,
+	timeRangeModal: {
+		isOpen: false,
+		filter: 'all',
+	},
 }
 
 const modalsSlice = createSlice({
@@ -30,7 +39,13 @@ const modalsSlice = createSlice({
 		toggleCategoryModal(state, action: PayloadAction<boolean>) {
 			state.categoryModal = action.payload
 		},
+		toggleTimeRangeModal(state, action: PayloadAction<TimeRangeModalProps>) {
+			const { isOpen, filter } = action.payload
+			state.timeRangeModal.isOpen = isOpen
+			if (filter) state.timeRangeModal.filter = filter
+		},
 	},
 })
-export const { toggleCategoryModal, toggleExpenseModal } = modalsSlice.actions
+export const { toggleCategoryModal, toggleExpenseModal, toggleTimeRangeModal } = modalsSlice.actions
+
 export const modalsReducer = modalsSlice.reducer

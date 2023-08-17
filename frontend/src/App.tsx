@@ -5,6 +5,7 @@ import { CurrencyComponent } from 'features/ChangeCurrency'
 import { ToastContainer } from 'react-toastify'
 import { CreateCategory } from 'features/CreateCategory'
 import { Drawer } from 'components/Drawer'
+import { TimeRange } from 'features/TimeRange'
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 				<ExpensesScreen />
 				<CurrencyComponent />
 				<CreateCategory />
+				<TimeRange />
 				<ToastContainer />
 			</div>
 		</>

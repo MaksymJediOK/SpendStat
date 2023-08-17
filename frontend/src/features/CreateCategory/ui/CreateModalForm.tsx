@@ -6,12 +6,12 @@ import { Category } from 'types'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useAppDispatch } from 'hooks/redux.ts'
 import { toggleCategoryModal } from 'store/reducers'
-import { useCreateNewCategoryMutation } from './api'
-import { categoryToast } from './helpers'
-import { colourOptions, iconOptions } from './data'
-import { colourStyles, CustomOption, IconComponent, iconStyles } from './select-styles'
-import { categoryResolver } from './schemas'
-import { IconOptionType } from './types'
+import { useCreateNewCategoryMutation } from '../api'
+import { categoryToast } from '../helpers'
+import { colourOptions, iconOptions } from '../data'
+import { colourStyles, CustomOption, IconComponent, iconStyles } from '../select-styles'
+import { categoryResolver } from '../schemas'
+import { IconOptionType } from '../types'
 
 export const CreateModalForm = () => {
 	const [createCategory] = useCreateNewCategoryMutation()

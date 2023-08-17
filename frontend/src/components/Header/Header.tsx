@@ -1,11 +1,11 @@
-import { useDispatch } from 'react-redux'
-import { drawerToggle } from 'store/reducers'
+import { drawerToggle, toggleTimeRangeModal } from 'store/reducers'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { AiOutlineUser } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import { useAppDispatch } from 'hooks/redux.ts'
 
 export const Header = () => {
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 
 	return (
 		<section className=' mx-auto bg-blue-400 px-3 py-2 md:px-6 md:py-3'>
@@ -16,7 +16,10 @@ export const Header = () => {
 				<div className='col-span-1 col-start-2'>
 					<h4 className='text-base font-semibold'>All accounts</h4>
 					<h2 className='text-xl font-semibold tracking-wide'>-17 778$</h2>
-					<div className='flex flex-col items-center justify-center text-center md:flex-row'>
+					<div
+						className='flex cursor-pointer flex-col items-center justify-center text-center md:flex-row'
+						onClick={() => dispatch(toggleTimeRangeModal({ isOpen: true }))}
+					>
 						<div className='mx-2 rounded-md bg-black p-1'>
 							<span className='px-1 text-[16px] font-bold text-white'>30</span>
 						</div>
