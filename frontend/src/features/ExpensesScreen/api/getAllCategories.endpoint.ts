@@ -13,7 +13,7 @@ const extendedCategoryApi = categoryApi.injectEndpoints({
 			providesTags: (result) =>
 				result
 					? [
-							...result.map(({ }, index) => ({ type: 'Category' as const, index })),
+							...result.map(({ categoryId }) => ({ type: 'Category' as const, categoryId })),
 							{ type: 'Category', id: 'LIST' },
 					  ]
 					: [{ type: 'Category', id: 'LIST' }],
@@ -24,4 +24,3 @@ const extendedCategoryApi = categoryApi.injectEndpoints({
 
 export const { useGetAllExpensesQuery } = extendedCategoryApi
 
-//Todo add id field from query

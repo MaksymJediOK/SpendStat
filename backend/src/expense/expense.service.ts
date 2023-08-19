@@ -31,6 +31,10 @@ export class ExpenseService {
                 categoryWithExp = await this.byDateService.getExpensesTodayByCategory(userId)
                 break
             }
+            case 'week': {
+                categoryWithExp = await this.byDateService.getExpenseInCurrentWeek(userId)
+                break
+            }
             case 'month': {
                 categoryWithExp = await this.byDateService.getExpensesInCurrentMonthByCategory(userId)
                 break
@@ -78,5 +82,4 @@ export class ExpenseService {
             return acc + exp.value
         }, 0)
     }
-
 }

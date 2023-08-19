@@ -6,14 +6,16 @@ import { Category } from '@prisma/client'
 export class ExpenseByDateService {
     private currentDate = new Date()
     private currentYear = this.currentDate.getFullYear()
-    private currentMonth = this.currentDate.getMonth() + 1
     constructor(private prisma: PrismaService) {}
-    //ToDo switch case for date
-
 
     async getExpensesInCurrentMonthByCategory(userId: number) {
-        const startDate = new Date(this.currentYear, this.currentMonth, 1)
-        const endDate = new Date(this.currentYear, this.currentMonth + 1, 1)
+        const today = new Date()
+        const currentYear = today.getFullYear()
+        const currentMonth = today.getMonth()
+
+        const startDate = new Date(currentYear, currentMonth, 1)
+        const endDate = new Date(currentYear, currentMonth + 1, 0)
+
         const expenses = await this.prisma.category.findMany({
             where: {
                 User: {
@@ -25,7 +27,7 @@ export class ExpenseByDateService {
                     where: {
                         createdAt: {
                             gte: startDate,
-                            lt: endDate,
+                            lte: endDate,
                         },
                     },
                 },
@@ -77,6 +79,37 @@ export class ExpenseByDateService {
                         createdAt: {
                             gte: startDate,
                             lt: endDate,
+                        },
+                    },
+                },
+            },
+        })
+
+        return expenses
+    }
+
+    async getExpenseInCurrentWeek(userId: number) {
+        const today = new Date()
+        today.setHours(0, 0, 0, 0)
+
+        const startOfWeek = new Date(today)
+        startOfWeek.setDate(today.getDate() - today.getDay())
+
+        const endOfWeek = new Date(today)
+        endOfWeek.setDate(startOfWeek.getDate() + 6)
+
+        const expenses = await this.prisma.category.findMany({
+            where: {
+                User: {
+                    id: userId,
+                },
+            },
+            include: {
+                expenses: {
+                    where: {
+                        createdAt: {
+                            gte: startOfWeek,
+                            lte: endOfWeek,
                         },
                     },
                 },
