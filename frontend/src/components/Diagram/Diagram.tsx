@@ -1,17 +1,14 @@
-interface ChartData {
-	label: string
-	value: number
-	color: string
-}
+import { ChartData } from 'types/Chart.ts'
 
 interface DoughnutChartProps {
-	data: ChartData[]
+	expenses: ChartData[] | undefined
 	radius: number
 	innerRadius: number
 }
 
-export const DoughnutChart = ({ data, radius, innerRadius }: DoughnutChartProps) => {
-	const total = data.reduce((sum, item) => sum + item.value, 0)
+export const DoughnutChart = ({ expenses, radius, innerRadius }: DoughnutChartProps) => {
+	if (!expenses) return <h2>Try adding some expenses</h2>
+	const total = expenses.reduce((sum, item) => sum + item.value, 0)
 	const center = radius + 10 // Center coordinates for the number
 
 	let startAngle = 0
@@ -19,7 +16,7 @@ export const DoughnutChart = ({ data, radius, innerRadius }: DoughnutChartProps)
 
 	return (
 		<svg width={radius * 2 + 20} height={radius * 2 + 20}>
-			{data.map((item) => {
+			{expenses.map((item) => {
 				const percentage = (item.value / total) * 100
 				endAngle = startAngle + (percentage * Math.PI * 2) / 100
 
