@@ -54,6 +54,18 @@ export class ExpenseService {
         return this.SumExpenses(categoryWithExp)
     }
 
+    async totalExpenses(userId: number) {
+        const byCategories = await this.byDateService.getAllTimeExpenseByCategory(userId)
+        const summarized = this.SumExpenses(byCategories)
+
+        if (summarized) {
+            return summarized.reduce((acc, exp: ExpenseCategory) => {
+                return acc + exp.expenseValue
+            }, 0)
+        }
+        return new BadRequestException({}, 'Something went wrong')
+    }
+
     async getAllTimeExpenseInEachCategory(userId: number) {
         const expenses = await this.byDateService.getAllTimeExpenseByCategory(userId)
 

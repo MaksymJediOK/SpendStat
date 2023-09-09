@@ -21,4 +21,9 @@ export class ExpenseController {
     getAllTimeExpenses(@Query('filter') filter: string = 'today', @GetCurrentUserId() userId: number) {
         return this.expenseService.getSummarizedExpenses(filter, userId)
     }
+
+    @Get('total')
+    getTotalExpenses(@GetCurrentUserId() userId: number) {
+        return this.expenseService.totalExpenses(userId)
+    }
 }
